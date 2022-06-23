@@ -51,7 +51,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/{id}")
-	public ResponseEntity<Tutorial> getProductById(@PathVariable("id") long id) {
+	public ResponseEntity<Product> getProductById(@PathVariable("id") long id) {
 		Optional<Product> productData = productRepository.findById(id);
 
 		if (productData.isPresent()) {
@@ -88,7 +88,7 @@ public class ProductController {
 	}
 
 	@DeleteMapping("/products/{id}")
-	public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
+	public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") long id) {
 		try {
 			productRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -109,7 +109,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/published")
-	public ResponseEntity<List<Tutorial>> findByPublished() {
+	public ResponseEntity<List<Product>> findByPublished() {
 		try {
 			List<Product> products = productRepository.findByPublished(true);
 
